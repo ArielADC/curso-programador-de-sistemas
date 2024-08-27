@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>6. Escreva uma função que retorne o resultado da divisão inteira entre dois números inteiros.</title>
+</head>
+<body>
+<script type="text/javascript">
+	function divisão (n1,n2){
+		let divisão;
+      divisão = (Number(n1)/Number(n2)  );
+		  return divisão; 
+	}
+	let c1 = divisão( 10,3 );
+	console.log(c1)
+
+		let c2 = divisão(  9,3 );
+	    console.log(c2)
+
+	    	let c3 = divisão( 9,2 );
+            console.log(c3)
+
+	    	  let c4 = divisão( 7,5 );
+	          console.log(c4)
+
+		        let c5 = divisão( 0,5 );
+                 console.log(c5)
+</script>
+</body>
+</html>
+<script type="text/javascript">
+ 	let n1, n2, resposta, mensagem; 
+ 
+  n1 = Number(prompt("Digite o primeiro número:")); 
+  n2 = Number(prompt("Digite o segundo número:")); 
+ 
+  resposta = divisão(n1,n2); 
+ 
+  mensagem = `A divisão de ${n1} e ${n2} é igual a ${resposta}`; 
+ 
+  document.writeln(mensagem); 
+</script>
