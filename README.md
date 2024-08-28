@@ -4,4 +4,4 @@
 > Esse arquivo sera atualizado conforme a resoluçao dos essercicios
 
  > [!WARNING]
- >Fique atento co mensagens obisolentas 
+ >Fique atento com mensagens obisolentas 
