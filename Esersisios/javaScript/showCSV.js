@@ -26,33 +26,28 @@ function separaColunas(linha) {
 }
 
 function separaConteudo(lines) {
-    const conteudo = [];
+    let obj ={};
 
-    for(let i=0; i<lines.length; i++) {
-        let linha = lines[i];
-        let colunas = separaColunas(linha);
-
-        conteudo.push(colunas);
+    for(let j=0; j<headers.length; j++);{
+        let titulo = headers [j];
+        let coluna = linha[j];
+        
+        obj[titulo] = coluna;
     }
 
-    return conteudo;
+    return obj;
 }
 
-function parteDificil(headers, conteudo) {
+function parteDificil(headers,conteudo) {
     const result = [];
 
     for(let i=0; i<conteudo.length; i++) {
-        let obj = {};
-        let linha = conteudo[i];
+    const linhatabla = conteudo [i];
+    const obj = constroiObjeto(headers,linhatabla);
+    
+    result.push(obj);
 
-        for(let j=0; j<headers.length; j++){
-            let titulo = headers[j];
-            let coluna = linha[j];
-
-            obj[titulo] = coluna;
-        }
-
-        result.push(obj);
+ 
     }
 
     return result;
