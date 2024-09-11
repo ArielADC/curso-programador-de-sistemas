@@ -9,3 +9,5 @@ function somaLista(lista) {
 }
 
 module.exports = somaLista;
+
+
