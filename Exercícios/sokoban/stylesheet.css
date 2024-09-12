@@ -1,0 +1,25 @@
+body{
+height: 100vh;
+margin: 0;
+}
+
+main{
+ display: flex;
+justify-content: center;
+align-items: center;
+height: inherit;
+}
+
+#game {
+   display: inline-block;
+}
+
+.board{
+    width: 256px;
+    height: 265px;
+    border:solid 8px;
+    border-radius: 8px;
+    border-color: #343030;
+    background-color: rgb(196, 194, 194);
+    box-shadow: 4px, 4px rgb(99, 93, 93);
+}
