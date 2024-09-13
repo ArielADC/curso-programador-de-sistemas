@@ -11,20 +11,32 @@ height: inherit;
 }
 
 #game {
-    display: block;
+   display: block;
 }
 
 .board{
     display: block;
+    min-height: 256px;
     min-width: 256px;
-    min-width: 265px;
-    border:solid 8px #505050;
+    padding: 2px 3px;
+    border:solid 8px #444242;
     border-radius: 8px;
-    background-color: rgb(196, 194, 194);
+    
+    background-color: rgba(46, 43, 43, 0.867);
     box-shadow: 4px, 4px rgb(99, 93, 93);
 }
 .row {
+    display: flex;
+    flex-direction: row;
     background-color: rgba(255, 255, 255, 0.385);
-    heght: 64px;
-    margin: 8px;
+    min-height: 64px;
+    margin: 2px 0;
+}
+.cell{
+    height: 64px;
+    width: 64px;
+    margin: 0 1px;
+    background-color: aliceblue;
+    border-radius: 2px;
+    box-shadow: 4px, 4px rgb(99, 93, 93);
 }
