@@ -11,15 +11,20 @@ height: inherit;
 }
 
 #game {
-   display: inline-block;
+    display: block;
 }
 
 .board{
-    width: 256px;
-    height: 265px;
-    border:solid 8px;
+    display: block;
+    min-width: 256px;
+    min-width: 265px;
+    border:solid 8px #505050;
     border-radius: 8px;
-    border-color: #343030;
     background-color: rgb(196, 194, 194);
     box-shadow: 4px, 4px rgb(99, 93, 93);
+}
+.row {
+    background-color: rgba(255, 255, 255, 0.385);
+    heght: 64px;
+    margin: 8px;
 }
