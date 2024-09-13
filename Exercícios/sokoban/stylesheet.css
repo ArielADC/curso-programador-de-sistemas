@@ -11,7 +11,11 @@ height: inherit;
 }
 
 #game {
-   display: block;
+    display: block;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .board{
@@ -25,6 +29,7 @@ height: inherit;
     background-color: rgba(46, 43, 43, 0.567);
     box-shadow: 4px, 4px rgb(99, 93, 93);
 }
+
 .row {
     display: flex;
     flex-direction: row;
@@ -32,6 +37,7 @@ height: inherit;
     min-height: 64px;
     margin: 2px 0;
 }
+
 .cell{
     height: 64px;
     width: 64px;
@@ -40,7 +46,12 @@ height: inherit;
     border-radius: 2px;
     box-shadow: 4px, 4px rgb(99, 93, 93);
 }
+
 .empty{
     background-color: unset;
     box-shadow: none;
+}
+.board2{
+    display: flex;
+    flex-direction: row;
 }
