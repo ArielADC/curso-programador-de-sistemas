@@ -21,14 +21,14 @@ height: inherit;
     padding: 2px 3px;
     border:solid 8px #444242;
     border-radius: 8px;
-    
-    background-color: rgba(46, 43, 43, 0.867);
+     /* background-color: rgba(255, 255, 255, 0.069); */
+    background-color: rgba(46, 43, 43, 0.567);
     box-shadow: 4px, 4px rgb(99, 93, 93);
 }
 .row {
     display: flex;
     flex-direction: row;
-    background-color: rgba(255, 255, 255, 0.385);
+   
     min-height: 64px;
     margin: 2px 0;
 }
@@ -39,4 +39,8 @@ height: inherit;
     background-color: aliceblue;
     border-radius: 2px;
     box-shadow: 4px, 4px rgb(99, 93, 93);
+}
+.empty{
+    background-color: unset;
+    box-shadow: none;
 }
