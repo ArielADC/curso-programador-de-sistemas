@@ -1,105 +1,103 @@
-function criarLinha(Celulas, linhaIndex,linhaIndex2) {
-    const linha = document.createElement('div');
-    linha.classList.add('row');
 
-    Callback (Celulas, numRows, numCols, k, i);
+function builGameBoard(numberOfRows, numberOfcollumns, drowrule) {
+    const game = document.getElementById("board");
+    const board = document.createElement('div');
+    board.classList.add('tabuleiro');
+    console.log(board);
+
+    for (let k = 0; k < numberOfRows; k++) {
+        const row = document.createElement('div');
+        row.classList.add('row');
+        board.append(row);
+        for (let i = 0; i < numberOfcollumns; i++) {
+            const celula = document.createElement('div');
+            celula.classList.add('cell');
+            row.append(celula);
+            drowrule(celula, numberOfRows, numberOfcollumns, k, i);
+        }
+    }
+    board.append(board);
 }
-//X incompleto  
-// const tabuleiro = document.getElementById('board2');
+function rule0(celula, numRows, numCols, k, i){
+    if (k <= 4) {
+        celula.classList.add('flag');
+    }
+}
+ function rule1(celula, numberOfRows, numberOfcollumns, k , i){
+    if ( k == 0 || i == 0 || k == numberOfRows - 1 || i == numberOfcollumns -1)
+        celula.classList.add('box');
+ }
+ function rule2(celula, numberOfRows, numberOfcollumns, k, i){
+    if ( k == 0)
+        celula.classList.add('box');
+ }
+ function rule3(celula, numberOfRows, numberOfcollumns, k, i){
+    if ( i == 0){
+        celula.classList.add('box');
+    }
+}
+function rule4(celula, numberOfRows, numberOfcollumns, k, i){
+    if ( k == 7){
+        celula.classList.add('box');
+}
+}
+function rule5(celula, numberOfRows, numberOfcollumns, k, i){
+    if ( i == 5){
+        celula.classList.add('box');
+    }
+}
+function rule6(celula, numberOfRows, numberOfcollumns, k, i){
+    if ( k == 4 || i == 4){
+        celula.classList.add('box');
+}
+}
+function rule7(celula, numberOfRows, numberOfcollumns, k, i){
+    if ( i == 5 || k == 3){
+        celula.classList.add('box');
+    }
+}
+function rule8(celula, numberOfRows, numberOfcollumns, k, i){
+    if ( k == 3 && i == 5){
+        celula.classList.add('box');
+    }
+}
+function rule9(celula, numberOfRows, numberOfcollumns, k, i){
+    if ( i == k){
+        celula.classList.add('box');
+}
+}
+function rule10(celula, numberOfRows, numberOfcollumns, k, i){
+    if ( k == i || i == k){
+        celula.classList.add('box');
+    }
+}
+function rule11(celula, numberOfRows, numberOfcollumns, k, i){
+    if ( i % 2 ==0){
+        celula.classList.add('box');
+    }
+}
+function rule12(celula, numberOfRows, numberOfcollumns, k, i){
+    if ( i % 2 == 1){
+        celula.classList.add('box');
+    }
+}
+function rule13(celula, numberOfRows, numberOfcollumns, k, i){
+    if ( ! ( k == 0 || i == 0 || k == numberOfRows -1 || i == numberOfcollumns -1)) {
+        celula.classList.add('box');
+    }
+}
 
-// function criarLinha(Celulas, linhaIndex,linhaIndex2) {
-//     const linha = document.createElement('div');
-//     linha.classList.add('row');
-
-//     for (let i = 0; i < Celulas; i++) {
-//         const celula = document.createElement('div');
-//         celula.classList.add('cell');
-
-        
-//         if (i === linhaIndex || i === Celulas -  - linhaIndex) {
-
-//             celula.style.backgroundColor = 'transparent';
-//             celula.style.border = 'none';
-//         } else {
-
-//             celula.classList.add('not-x-part');
-//         }
-
-//         linha.append(celula);
-//     }
-
-    
-//     return linha;
-// }
-
-// const numLinhas = 8; 
-// const numCelulasPorLinha = 8;
-
-// for (let i = 0; i < numLinhas; i++) {
-//     const linha = criarLinha(numCelulasPorLinha, i);
-//     tabuleiro.append(linha);
-// }
-
-
-
-
-// // cubo com o meio vasio 
-// const tabuleiro = document.getElementById('board2');
-
-// function criarLinha(Celulas, linhaIndex) {
-//     const linha = document.createElement('div');
-//     linha.classList.add('row');
-
-//     for (let i = 0; i < Celulas; i++) {
-//         const celula = document.createElement('div');
-//         celula.classList.add('cell');
-
-        
-//        if (linhaIndex >= 1 && linhaIndex <= 6 && i >= 1 && i <= 6) {
-//         celula.classList.add('empty'); 
-//         celula.style.backgroundColor = 'transparent';
-//          } 
-
-//         linha.append(celula);
-//     }
-
-//     return linha;
-// }
-
-// const numLinhas = 8; 
-// const numCelulasPorLinha = 8;
-
-// for (let i = 0; i < numLinhas; i++) {
-//     const linha = criarLinha(numCelulasPorLinha, i);
-//     tabuleiro.append(linha);
-// }
-
-
-
-
-
- //tabuleiro completo
-// const tabuleiro = document.getElementById('board2');
-
-
-// function criarLinha(Celulas) {
-//     const linha = document.createElement('div');
-//     linha.classList.add('row');
-
-//     for (let i = 0; i < Celulas; i++) {
-//         const celula = document.createElement('div');
-//         celula.classList.add('cell');
-//         linha.append(celula);
-
-//     }
-
-//     return linha;
-// }
-
-// const numLinhas = 8; 
-// const numCelulasPorLinha = 8;
-
-// for (let i = 0; i < numLinhas; i++) {
-//     const linha = criarLinha(numCelulasPorLinha);
-//     tabuleiro.append(linha);
-// }
+builGameBoard(8, 8, rule0);
+builGameBoard(8, 8, rule1);
+builGameBoard(8, 8, rule2);
+builGameBoard(8, 8, rule3);
+builGameBoard(8, 8, rule4);
+builGameBoard(8, 8, rule5);
+builGameBoard(8, 8, rule6);
+builGameBoard(8, 8, rule7);
+builGameBoard(8, 8, rule8);
+builGameBoard(8, 8, rule9);
+builGameBoard(8, 8, rule10);
+builGameBoard(8, 8, rule11);
+builGameBoard(8, 8, rule12);
+builGameBoard(8, 8, rule13);
