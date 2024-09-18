@@ -57,7 +57,7 @@ height: inherit;
     flex-direction: row;
 }
 .flag {
-    background-color: rgba(240, 60, 30, 0.4);
+    background-image: linear-gradient(black, grey, aqua)
 }
 
-.box {background-color: chocolate;}
+/* .box {background-color:;} */

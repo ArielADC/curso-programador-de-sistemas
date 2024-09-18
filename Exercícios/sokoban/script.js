@@ -1,9 +1,9 @@
 
 function builGameBoard(numberOfRows, numberOfcollumns, drowrule) {
-    const game = document.getElementById("board");
+    const game = document.getElementById("game");
     const board = document.createElement('div');
-    board.classList.add('tabuleiro');
-    console.log(board);
+    board.classList.add('board');
+    
 
     for (let k = 0; k < numberOfRows; k++) {
         const row = document.createElement('div');
@@ -16,74 +16,74 @@ function builGameBoard(numberOfRows, numberOfcollumns, drowrule) {
             drowrule(celula, numberOfRows, numberOfcollumns, k, i);
         }
     }
-    board.append(board);
+    game.append(board);
 }
-function rule0(celula, numRows, numCols, k, i){
+function rule0(celula, numRows, numCols, k, i) {
     if (k <= 4) {
         celula.classList.add('flag');
     }
 }
- function rule1(celula, numberOfRows, numberOfcollumns, k , i){
-    if ( k == 0 || i == 0 || k == numberOfRows - 1 || i == numberOfcollumns -1)
-        celula.classList.add('box');
- }
- function rule2(celula, numberOfRows, numberOfcollumns, k, i){
-    if ( k == 0)
-        celula.classList.add('box');
- }
- function rule3(celula, numberOfRows, numberOfcollumns, k, i){
-    if ( i == 0){
-        celula.classList.add('box');
+function rule1(celula, numberOfRows, numberOfcollumns, k, i) {
+    if (k == 0 || i == 0 || k == numberOfRows - 1 || i == numberOfcollumns - 1)
+        celula.classList.add('flag');
+}
+function rule2(celula, numberOfRows, numberOfcollumns, k, i) {
+    if (k == 0)
+        celula.classList.add('flag');
+}
+function rule3(celula, numberOfRows, numberOfcollumns, k, i) {
+    if (i == 0) {
+        celula.classList.add('flag');
     }
 }
-function rule4(celula, numberOfRows, numberOfcollumns, k, i){
-    if ( k == 7){
-        celula.classList.add('box');
-}
-}
-function rule5(celula, numberOfRows, numberOfcollumns, k, i){
-    if ( i == 5){
-        celula.classList.add('box');
+function rule4(celula, numberOfRows, numberOfcollumns, k, i) {
+    if (k == 7) {
+        celula.classList.add('flag');
     }
 }
-function rule6(celula, numberOfRows, numberOfcollumns, k, i){
-    if ( k == 4 || i == 4){
-        celula.classList.add('box');
-}
-}
-function rule7(celula, numberOfRows, numberOfcollumns, k, i){
-    if ( i == 5 || k == 3){
-        celula.classList.add('box');
+function rule5(celula, numberOfRows, numberOfcollumns, k, i) {
+    if (i == 5) {
+        celula.classList.add('flag');
     }
 }
-function rule8(celula, numberOfRows, numberOfcollumns, k, i){
-    if ( k == 3 && i == 5){
-        celula.classList.add('box');
+function rule6(celula, numberOfRows, numberOfcollumns, k, i) {
+    if (k == 3 || i == 4) {
+        celula.classList.add('flag');
     }
 }
-function rule9(celula, numberOfRows, numberOfcollumns, k, i){
-    if ( i == k){
-        celula.classList.add('box');
-}
-}
-function rule10(celula, numberOfRows, numberOfcollumns, k, i){
-    if ( k == i || i == k){
-        celula.classList.add('box');
+function rule7(celula, numberOfRows, numberOfcollumns, k, i) {
+    if (i == 5 || k == 3) {
+        celula.classList.add('flag');
     }
 }
-function rule11(celula, numberOfRows, numberOfcollumns, k, i){
-    if ( i % 2 ==0){
-        celula.classList.add('box');
+function rule8(celula, numberOfRows, numberOfcollumns, k, i) {
+    if (k == 3 && i == 5) {
+        celula.classList.add('flag');
     }
 }
-function rule12(celula, numberOfRows, numberOfcollumns, k, i){
-    if ( i % 2 == 1){
-        celula.classList.add('box');
+function rule9(celula, numberOfRows, numberOfcollumns, k, i) {
+    if (i == k) {
+        celula.classList.add('flag');
     }
 }
-function rule13(celula, numberOfRows, numberOfcollumns, k, i){
-    if ( ! ( k == 0 || i == 0 || k == numberOfRows -1 || i == numberOfcollumns -1)) {
-        celula.classList.add('box');
+function rule10(celula, numberOfRows, numberOfcollumns, k, i) {
+    if (k + i == numberOfcollumns - 1 ) {
+        celula.classList.add('flag');
+    }
+}
+function rule11(celula, numberOfRows, numberOfcollumns, k, i) {
+    if (i % 2 == 0) {
+        celula.classList.add('flag');
+    }
+}
+function rule12(celula, numberOfRows, numberOfcollumns, k, i) {
+    if (i % 2 == 1) {
+        celula.classList.add('flag');
+    }
+}
+function rule13(celula, numberOfRows, numberOfcollumns, k, i) {
+    if (!(k == 0 || i == 0 || k == numberOfRows - 1 || i == numberOfcollumns - 1)) {
+        celula.classList.add('flag');
     }
 }
 
