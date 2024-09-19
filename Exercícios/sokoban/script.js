@@ -8,23 +8,17 @@ jogador.addEventListener("click", function(){
    window.alert("clicou no jogador");
 })
 
-window.addEventListener("keydown", function(event){
+window.addEventListener("keydown",function nextPositon (event){
 //window.alert("presionou tecla");
-console.log(event);
-
-if (event.code == "ArrowUp" ){
-     x += -1;
-}
-
-if (event.code == "ArrowRight" ){
-    x += -1;
-}
-
-if (event.code == "ArrowDown" ){
-    x += -1;
-}
-
-if (event.code == "ArrowLeft" ){
-    x += -1;
-}
+nextPositon(event.code);
 })
+function nextPositon('keycode'){
+if (keycode == "ArrowUp" ) x--;
+
+if (keycode == "ArrowDown" ) x++;
+
+if (keycode == "ArrowLeft" ) y--;
+
+if (keycode == "ArrowRight" ) y++;
+console.log(event)
+}
