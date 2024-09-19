@@ -34,3 +34,10 @@ function nextPositon(keycode) {
    cells[K].append(jogador);
 }
 
+function movePlayer(Positon){
+
+}
+
+function verifyPositon(Positon) {
+
+}
