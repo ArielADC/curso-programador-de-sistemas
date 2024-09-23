@@ -77,12 +77,12 @@ height: inherit;
 }
 .jogador{
     width: 64px;
-    height:64px;
+    height: 64px;
     border-radius: 50%;
-    box-shadow: 0 0 0 2px purple;
-    background: radial-gradient(closest-side circle at 25% 50%, purple 20%, transparent 20%),
-      radial-gradient(closest-side circle at 75% 50%, white 20%, transparent 10%),
-      radial-gradient(closest-side circle at 25% 50%, white 100%, transparent 20%),
-      radial-gradient(closest-side circle at 75% 50%, purple 100%, transparent 10%),
-      linear-gradient(to bottom, purple 50%, white 50%);;
+    box-shadow: 0 0 0 2px;
+    background: radial-gradient(closest-side circle at 50% 25% ,black 20%, transparent 20%), 
+      radial-gradient(closest-side circle at 50% 25%, white 100%, transparent 10%), 
+      radial-gradient(closest-side circle at 50% 75%, white 20%, transparent 20%), 
+      radial-gradient(closest-side circle at 50% 75%, black 100%, transparent 10%),
+      linear-gradient(to right, white 50%, black 50%);
 }
