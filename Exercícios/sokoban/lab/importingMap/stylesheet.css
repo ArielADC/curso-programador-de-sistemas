@@ -1,0 +1,91 @@
+body{
+height: 100vh;
+margin: 0;
+}
+
+main{
+ display: flex;
+justify-content: center;
+align-items: center;
+height: inherit;
+}
+
+#game {
+    display: block;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.board{
+    display: block;
+    min-height: 256px;
+    min-width: 256px;
+    padding: 2px 3px;
+    border:solid 8px 
+     hsla(5, 93%, 28%, 1);
+
+    background: linear-gradient(90deg, hsla(5, 93%, 28%, 1) 0%, hsla(34, 10%, 13%, 1) 100%);
+    
+    background: -moz-linear-gradient(90deg, hsla(5, 93%, 28%, 1) 0%, hsla(34, 10%, 13%, 1) 100%);
+    
+    background: -webkit-linear-gradient(90deg, hsla(5, 93%, 28%, 1) 0%, hsla(34, 10%, 13%, 1) 100%);
+    
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8C1105", endColorstr="#25221E", GradientType=1 );;
+    border-radius: 8px;
+    background-color: rgba(46, 43, 43, 0.567);
+    box-shadow: 4px, 4px rgb(99, 93, 93);
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+   
+    min-height: 64px;
+    margin: 2px 0;
+}
+
+.cell{
+    height: 64px;
+    width: 64px;
+    margin: 0 1px;
+    background-color: aliceblue;
+    border-radius: 2px;
+    box-shadow: 4px, 4px rgb(99, 93, 93);
+}
+
+.empty{
+    background-color: unset;
+    box-shadow: none;
+}
+.board2{
+    display: flex;
+    flex-direction: row;
+}
+.flag {
+    background: hsla(354, 95%, 24%, 1);
+
+    background: linear-gradient(90deg, hsla(354, 95%, 24%, 1) 0%, hsla(234, 70%, 24%, 1) 100%);
+    
+    background: -moz-linear-gradient(90deg, hsla(354, 95%, 24%, 1) 0%, hsla(234, 70%, 24%, 1) 100%);
+    
+    background: -webkit-linear-gradient(90deg, hsla(354, 95%, 24%, 1) 0%, hsla(234, 70%, 24%, 1) 100%);
+    
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#76030F", endColorstr="#121B67", GradientType=1 );
+}
+.jogador{
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px;
+    background: radial-gradient(closest-side circle at 50% 25% ,black 20%, transparent 20%), 
+      radial-gradient(closest-side circle at 50% 25%, white 100%, transparent 10%), 
+      radial-gradient(closest-side circle at 50% 75%, white 20%, transparent 20%), 
+      radial-gradient(closest-side circle at 50% 75%, black 100%, transparent 10%),
+      linear-gradient(to right, white 50%, black 50%);
+}
+.box { background-color: chocolate; }
+.goal { background-color: burlywood; }
+.wall { background-color: darkgray; }
