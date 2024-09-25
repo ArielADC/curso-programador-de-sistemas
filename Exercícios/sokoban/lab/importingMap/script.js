@@ -37,6 +37,8 @@ function buildGameBoard(numRows, numCols) {
          const char = boardMap[x][y];
 
          if (char === '#')cell.classList.add('wall');
+         if (char === 'G')cell.classList.add('goal');
+         if (char === 'B')cell.classList.add('box');
       }
    }
 
