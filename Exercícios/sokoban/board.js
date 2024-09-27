@@ -36,10 +36,10 @@ function buildGameBoard(numRows, numCols) {
 
  
 function createGameElement(elementName, className, parentNode) {
-    const playerElement = document.createElement(elementName);
-    playerElement.classList.add(className);
-    parentNode.append(playerElement);
+    const element = document.createElement(elementName);
+    element.classList.add(className);
+    parentNode.append(element);
  
-    return playerElement;
+    return element;
  }
  
