@@ -1,17 +1,4 @@
-const boardMap = [
-   [ "#", "#", "#", "#", "#", "#", "#", "#" ],
-   [ "#", ".", ".", ".", ".", ".", ".", "#" ],
-   [ "#", ".", ".", ".", "#", ".", ".", "#" ],
-   [ "#", ".", "#", "G", ".", ".", ".", "#" ],
-   [ "#", ".", ".", "G", "B", "#", ".", "#" ],
-   [ "#", ".", ".", "#", ".", "B", ".", "#" ],
-   [ "#", ".", ".", "P", ".", ".", ".", "#" ],
-   [ "#", "#", "#", "#", "#", "#", "#", "#" ]
-];
 
-
-const NUM_ROWS = boardMap.length;
-const NUM_COLS = boardMap[0].length;
 
 const DIST_SALTO = 66;
 const MARGIN_FIX = 4;
@@ -64,12 +51,4 @@ function verifyPosition(position) {
 function calculaPosicao(qtd) {
 
    return `${qtd * DIST_SALTO + MARGIN_FIX}px`;
-}
-
-function createGameElement(elementName, className, parentNode) {
-   const playerElement = document.createElement(elementName);
-   playerElement.classList.add(className);
-   parentNode.append(playerElement);
-
-   return playerElement;
 }

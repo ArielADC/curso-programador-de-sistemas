@@ -1,3 +1,17 @@
+const boardMap = [
+    [ "#", "#", "#", "#", "#", "#", "#", "#" ],
+    [ "#", ".", ".", ".", ".", ".", ".", "#" ],
+    [ "#", ".", ".", ".", "#", ".", ".", "#" ],
+    [ "#", ".", "#", "G", ".", ".", ".", "#" ],
+    [ "#", ".", ".", "G", "B", "#", ".", "#" ],
+    [ "#", ".", ".", "#", ".", "B", ".", "#" ],
+    [ "#", ".", ".", "P", ".", ".", ".", "#" ],
+    [ "#", "#", "#", "#", "#", "#", "#", "#" ]
+ ];
+ 
+ 
+ const NUM_ROWS = boardMap.length;
+ const NUM_COLS = boardMap[0].length;
 
 function buildGameBoard(numRows, numCols) {
     const game = document.getElementById("game");
@@ -19,3 +33,13 @@ function buildGameBoard(numRows, numCols) {
     }
     return pieces;
  }
+
+ 
+function createGameElement(elementName, className, parentNode) {
+    const playerElement = document.createElement(elementName);
+    playerElement.classList.add(className);
+    parentNode.append(playerElement);
+ 
+    return playerElement;
+ }
+ 
