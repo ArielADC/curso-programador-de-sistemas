@@ -76,7 +76,7 @@ function createGameElement(elementName, className, parentNode) {
 function buildGameBoard(numRows, numCols) {
    const game = document.getElementById("game");
    const board = createGameElement('div', 'board', game);
-   const pieces = createGameElement('div','jogador',board);
+   const pieces = createGameElement('div','Block',board);
 
    for (let x = 0; x < numRows; x++) {
       const row = createGameElement('div', 'row', board);
