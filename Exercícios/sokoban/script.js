@@ -5,7 +5,7 @@ import { boardMap } from "./board.js";
 const pieces = buildGameBoard();
 const board = document.querySelector('.board');
 
-const player = createBoardPiece(pieces.player, 'jogador');
+const playerPiece = createBoardPiece(pieces.player, 'jogador');
 
 function createBoardPiece(piecePosition, className) {
    const piece = new Piece(piecePosition.x, piecePosition.y);
@@ -13,11 +13,16 @@ function createBoardPiece(piecePosition, className) {
    return piece;
 }
 
+for (let i = 0; i < pieces.block.length; i++)  {
+
+    createBoardPiece(pieces.block [i], 'Block');    
+}
+
 window.addEventListener("keydown", function (event) {
-   const nextPosition = player.nextPosition(event.code);
+   const nextPosition = playerPiece.nextPosition(event.code);
 
    if (verifyPosition(nextPosition)) {
-       player.moveTo(nextPosition);
+       playerPiece.moveTo(nextPosition);
    }
 });
 
