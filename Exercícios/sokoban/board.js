@@ -7,8 +7,7 @@ export const boardMap = [
     [ "#", ".", ".", "#", "", "B", ".", "#" ],
     [ "#", ".", ".", "P", ".", ".", ".", "#" ],
     [ "#", "#", "#", "#", "#", "#", "#", "#" ]
- ];
- 
+];
  
  const NUM_ROWS = boardMap.length;
  const NUM_COLS = boardMap[0].length;
@@ -31,7 +30,6 @@ export function buildGameBoard() {
  
           if (char === '#')cell.classList.add('wall');
           if (char === 'G')cell.classList.add('goal');
-         //  if (char === 'B')cell.classList.add('box');
           if (char === 'P')pieces.player = position;
           if (char === 'B')pieces.block.push(position);
          }

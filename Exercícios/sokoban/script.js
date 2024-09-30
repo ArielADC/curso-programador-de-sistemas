@@ -17,6 +17,7 @@ for (let i = 0; i < pieces.block.length; i++)  {
 
     createBoardPiece(pieces.block [i], 'Block');    
 }
+// function handleKedownEvent()
 
 window.addEventListener("keydown", function (event) {
    const nextPosition = playerPiece.nextPosition(event.code);
