@@ -1,33 +1,33 @@
-const DIST_SALTO = 66;
-const MARGIN_FIX = 4;
+import {buildGameBoard} from "./board.js";
+import Piece from "./piece.js";
+import { boardMap } from "./board.js";
 
-const pieces = buildGameBoard(NUM_ROWS, NUM_COLS);
+const pieces = buildGameBoard();
 const board = document.querySelector('.board');
 
-const player = new Piece(pieces.player.x, pieces.player.y);
-const playerElement = createBoardPiece(player, 'jogador');
+const player = createBoardPiece(pieces.player, 'jogador');
 
-function createBoardPiece(piece, className) {
+function createBoardPiece(piecePosition, className) {
+   const piece = new Piece(piecePosition.x, piecePosition.y);
    piece.insertElementInto(className, board);
-
-   return piece.Element;
+   return piece;
 }
 
 window.addEventListener("keydown", function (event) {
-   const next = player.nextPosition(event.code);
+   const nextPosition = player.nextPosition(event.code);
 
-   if (verifyPosition(next)) {
-      player.moveTo(next, playerElement);
+   if (verifyPosition(nextPosition)) {
+       player.moveTo(nextPosition);
    }
-})
+});
 
 function verifyPosition(position) {
    let { x, y } = position;
 
+
+   if (x < 0 || x >= boardMap.length || y < 0 || y >= boardMap[0].length) {
+       return false; 
+   }
+
    return boardMap[x][y] !== '#';
-}
-
-function calculaPosicao(qtd) {
-
-   return `${qtd * DIST_SALTO + MARGIN_FIX}px`;
 }
