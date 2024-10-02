@@ -1,45 +1,51 @@
-const boardMap = [
+export const boardMap = [
     [ "#", "#", "#", "#", "#", "#", "#", "#" ],
     [ "#", ".", ".", ".", ".", ".", ".", "#" ],
     [ "#", ".", ".", ".", "#", ".", ".", "#" ],
-    [ "#", ".", "#", "G", ".", ".", ".", "#" ],
-    [ "#", ".", ".", "G", "B", "#", ".", "#" ],
-    [ "#", ".", ".", "#", ".", "B", ".", "#" ],
-    [ "#", ".", ".", "P", ".", ".", ".", "#" ],
+    [ "#", ".", "#", ".", "G", ".", ".", "#" ],
+    [ "#", ".", ".", ".", "B", "#", ".", "#" ],
+    [ "#", ".", "G", "B", "P", "B", "G", "#" ],
+    [ "#", ".", ".", ".", ".", ".", ".", "#" ],
     [ "#", "#", "#", "#", "#", "#", "#", "#" ]
- ];
- 
+];
  
  const NUM_ROWS = boardMap.length;
  const NUM_COLS = boardMap[0].length;
 
-function buildGameBoard(numRows, numCols) {
+export function buildGameBoard() {
     const game = document.getElementById("game");
     const board = createGameElement('div', 'board', game);
-    const pieces = {};
+    const pieces = {
+      block: []
+    };
  
-    for (let x = 0; x < numRows; x++) {
+    let numberOfGoals = 0;
+    
+    for (let x = 0; x < NUM_ROWS; x++) {
        const row = createGameElement('div', 'row', board);
       
-       for (let y = 0; y < numCols; y++) {
+       for (let y = 0; y < NUM_COLS; y++) {
           const cell = createGameElement('div', 'cell', row);
           const char = boardMap[x][y];
+          const position = {x: x, y: y}
  
           if (char === '#')cell.classList.add('wall');
-          if (char === 'G')cell.classList.add('goal');
-          if (char === 'B')cell.classList.add('box');
-          if (char === 'P')pieces.player = {x: x, y: y};
-       }
+          if (char === 'P')pieces.player = position;
+          if (char === 'B')pieces.block.push(position);
+          if (char === 'G'){
+            cell.classList.add('goal')
+            numberOfGoals ++;
+          };
+        }
     }
-    return pieces;
+    return {pieces,numberOfGoals};
  }
 
  
-function createGameElement(elementName, className, parentNode) {
-    const playerElement = document.createElement(elementName);
-    playerElement.classList.add(className);
-    parentNode.append(playerElement);
+export function createGameElement(elementName, className, parentNode) {
+    const element = document.createElement(elementName);
+    element.classList.add(className);
+    parentNode.append(element);
  
-    return playerElement;
+    return element;
  }
- 
