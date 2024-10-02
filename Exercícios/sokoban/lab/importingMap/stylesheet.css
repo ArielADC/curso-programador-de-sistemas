@@ -85,7 +85,11 @@ height: inherit;
       radial-gradient(closest-side circle at 50% 75%, white 20%, transparent 20%), 
       radial-gradient(closest-side circle at 50% 75%, black 100%, transparent 10%),
       linear-gradient(to right, white 50%, black 50%);
+
+      transition:
+        left 150ms ease-in-out 50ms,
+        top 150ms ease-in-out 50ms;
 }
 .box { background-color: chocolate; }
 .goal { background-color: burlywood; }
-.wall { background-color: darkgray; }
+/* .wall { background-color: darkgray; } */

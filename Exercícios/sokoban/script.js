@@ -2,7 +2,7 @@ import { buildGameBoard } from "./board.js";
 import Piece from "./piece.js";
 import { boardMap } from "./board.js";
 
-const pieces = buildGameBoard();
+const {pieces, numberOfGoals} = buildGameBoard();
 const board = document.querySelector('.board');
 
 const player = createBoardPiece(pieces.player, 'jogador');
@@ -31,11 +31,6 @@ function findBoxAtPosition(position) {
     return boxes.find((caixa) => caixa.x === position.x && caixa.y === position.y);
 }
 
-console.log(findBoxAtPosition({ x: 1, y: 2 }));
-console.log(findBoxAtPosition({ x: 4, y: 4 }));
-console.log(findBoxAtPosition({ x: 4, y: 5 }));
-console.log(findBoxAtPosition({ x: 5, y: 5 }));
-
 
 function handlePieceMovement(keycode) {
     const nextPlayerposition = player.nextPosition(keycode);
@@ -50,6 +45,18 @@ function handlePieceMovement(keycode) {
 
             foundPiece.moveTo(boxNextPosition);
             player.moveTo(nextPlayerposition);
+
+            const qtdCaixasCertas = contagemDeCaixaCorretas();
+            console.log(qtdCaixasCertas);
+
+            if(qtdCaixasCertas == numberOfGoals){
+                setTimeout(levantaAPlaquinha, 350);
+            
+            }
+
+            function levantaAPlaquinha () {
+                alert("você Venceu!");
+            }
         }
     }
     else {
@@ -68,4 +75,17 @@ function verifyPosition(position) {
     }
 
     return boardMap[x][y] !== '#';
+}
+
+function contagemDeCaixaCorretas(){
+    let count = 0;
+
+    for (const position of boxes) {
+        let {x: j, y: i} = position;
+
+        
+        if(boardMap[i][j] === 'G') count++;
+    }
+
+    return count;
 }

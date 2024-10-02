@@ -2,10 +2,10 @@ export const boardMap = [
     [ "#", "#", "#", "#", "#", "#", "#", "#" ],
     [ "#", ".", ".", ".", ".", ".", ".", "#" ],
     [ "#", ".", ".", ".", "#", ".", ".", "#" ],
-    [ "#", ".", "#", "G", "", ".", ".", "#" ],
-    [ "#", ".", ".", "G", "B", "#", ".", "#" ],
-    [ "#", ".", ".", "#", "", "B", ".", "#" ],
-    [ "#", ".", ".", "P", ".", ".", ".", "#" ],
+    [ "#", ".", "#", ".", "G", ".", ".", "#" ],
+    [ "#", ".", ".", ".", "B", "#", ".", "#" ],
+    [ "#", ".", "G", "B", "P", "B", "G", "#" ],
+    [ "#", ".", ".", ".", ".", ".", ".", "#" ],
     [ "#", "#", "#", "#", "#", "#", "#", "#" ]
 ];
  
@@ -19,6 +19,7 @@ export function buildGameBoard() {
       block: []
     };
  
+    let numberOfGoals = 0;
     
     for (let x = 0; x < NUM_ROWS; x++) {
        const row = createGameElement('div', 'row', board);
@@ -29,12 +30,15 @@ export function buildGameBoard() {
           const position = {x: x, y: y}
  
           if (char === '#')cell.classList.add('wall');
-          if (char === 'G')cell.classList.add('goal');
           if (char === 'P')pieces.player = position;
           if (char === 'B')pieces.block.push(position);
-         }
+          if (char === 'G'){
+            cell.classList.add('goal')
+            numberOfGoals ++;
+          };
+        }
     }
-    return pieces;
+    return {pieces,numberOfGoals};
  }
 
  
