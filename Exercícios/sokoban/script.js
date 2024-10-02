@@ -1,94 +1,71 @@
-const boardMap = [
-   [ "#", "#", "#", "#", "#", "#", "#", "#" ],
-   [ "#", ".", ".", ".", ".", ".", ".", "#" ],
-   [ "#", ".", ".", ".", "#", ".", ".", "#" ],
-   [ "#", ".", "#", "G", ".", ".", ".", "#" ],
-   [ "#", ".", ".", "G", "B", "#", ".", "#" ],
-   [ "#", ".", ".", "#", ".", "B", ".", "#" ],
-   [ "#", ".", ".", "P", ".", ".", ".", "#" ],
-   [ "#", "#", "#", "#", "#", "#", "#", "#" ]
-];
+import { buildGameBoard } from "./board.js";
+import Piece from "./piece.js";
+import { boardMap } from "./board.js";
 
+const pieces = buildGameBoard();
+const board = document.querySelector('.board');
 
-const NUM_ROWS = boardMap.length;
-const NUM_COLS = boardMap[0].length;
+const player = createBoardPiece(pieces.player, 'jogador');
+const boxes = [];
 
-const DIST_SALTO = 66;
-const MARGIN_FIX = 4;
+function createBoardPiece(piecePosition, className) {
+    const piece = new Piece(piecePosition.x, piecePosition.y);
+    piece.insertElementInto(className, board);
+    return piece;
+}
 
+for (let i = 0; i < pieces.block.length; i++) {
 
-buildGameBoard(NUM_ROWS, NUM_COLS);
-
-const player = new Player(1, 1);
-const playerElement = document.querySelector('.jogador');
-
-playerElement.style.top = calculaPosicao(player.x);
-playerElement.style.left = calculaPosicao(player.y);
+    let piece = createBoardPiece(pieces.block[i], 'Block');
+    boxes.push(piece);
+}
 
 window.addEventListener("keydown", function (event) {
-   const next = player.nextPosition(event.code);
-   if (verifyPosition(next)) {
-      player.moveTo(next, playerElement);
-   }
-})
+    // event.preventDefault();
 
-function Player(x, y) {
-   this.x = x;
-   this.y = y;
+    handlePieceMovement(event.code);
+});
 
-   this.nextPosition = function (keycode) {
-      let { x, y } = this;
-      if (keycode === "ArrowUp") x--;
-      if (keycode === "ArrowDown") x++;
-      if (keycode === "ArrowLeft") y--;
-      if (keycode === "ArrowRight") y++;
-      return { x, y };
-      
-   }
 
-   this.moveTo = function (position, element) {
-      this.x = position.x;
-      this.y = position.y;
-      element.style.top = calculaPosicao(this.x);
-      element.style.left = calculaPosicao(this.y);
-   }
+function findBoxAtPosition(position) {
+    return boxes.find((caixa) => caixa.x === position.x && caixa.y === position.y);
+}
+
+console.log(findBoxAtPosition({ x: 1, y: 2 }));
+console.log(findBoxAtPosition({ x: 4, y: 4 }));
+console.log(findBoxAtPosition({ x: 4, y: 5 }));
+console.log(findBoxAtPosition({ x: 5, y: 5 }));
+
+
+function handlePieceMovement(keycode) {
+    const nextPlayerposition = player.nextPosition(keycode);
+
+    const foundPiece = findBoxAtPosition(nextPlayerposition);
+
+    if (foundPiece) {
+
+        const boxNextPosition = foundPiece.nextPosition(keycode);
+
+        if (verifyPosition(boxNextPosition) && !findBoxAtPosition(boxNextPosition)) {
+
+            foundPiece.moveTo(boxNextPosition);
+            player.moveTo(nextPlayerposition);
+        }
+    }
+    else {
+        if (verifyPosition(nextPlayerposition)) {
+            player.moveTo(nextPlayerposition);
+        }
+    }
 }
 
 function verifyPosition(position) {
-   let { x, y } = position;
+    let { x, y } = position;
 
-   return boardMap[x][y] !== '#';
-}
 
-function calculaPosicao(qtd) {
+    if (x < 0 || x >= boardMap.length || y < 0 || y >= boardMap[0].length) {
+        return false;
+    }
 
-   return `${qtd * DIST_SALTO + MARGIN_FIX}px`;
-}
-
-function createGameElement(elementName, className, parentNode) {
-   const playerElement = document.createElement(elementName);
-   playerElement.classList.add(className);
-   parentNode.append(playerElement);
-
-   return playerElement;
-}
-
-function buildGameBoard(numRows, numCols) {
-   const game = document.getElementById("game");
-   const board = createGameElement('div', 'board', game);
-   console.log(numCols,numRows);
-
-   for (let x = 0; x < numRows; x++) {
-      const row = createGameElement('div', 'row', board);
-     
-      for (let y = 0; y < numCols; y++) {
-         const cell = createGameElement('div', 'cell', row);
-         const char = boardMap[x][y];
-
-         if (char === '#')cell.classList.add('wall');
-         if (char === 'G')cell.classList.add('goal');
-         if (char === 'B')cell.classList.add('box');
-      }
-   }
-   createGameElement('div','jogador',board);
+    return boardMap[x][y] !== '#';
 }
