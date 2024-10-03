@@ -50,7 +50,7 @@ function handlePieceMovement(keycode) {
             player.moveTo(nextPlayerposition);
 
             const qtdCaixasCertas = contagemDeCaixaCorretas();
-            console.log(qtdCaixasCertas);
+            // console.log(qtdCaixasCertas);
 
             if (qtdCaixasCertas == numberOfGoals) {
                 setTimeout(levantaAPlaquinha, 350);
@@ -80,12 +80,14 @@ function verifyPosition(position) {
 function contagemDeCaixaCorretas() {
     let count = 0;
 
-    for (const position of boxes) {
-        let { x, y } = position; 
+   for (let i = 0; i < boxes.length; i++) {
+    let { x, y } = boxes[i];
+    
+    if (boardMap[y][x] === 'G') count++; 
 
-        if (boardMap[y][x] === 'G') count++; 
-    }
+
+    console.log(count);
+   }
 
     return count;
 }
-
