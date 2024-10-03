@@ -81,11 +81,11 @@ function contagemDeCaixaCorretas() {
     let count = 0;
 
     for (const position of boxes) {
-        let { x: j, y: i } = position;
+        let { x, y } = position; 
 
-
-        if (boardMap[i][j] === 'G') count++;
+        if (boardMap[y][x] === 'G') count++; 
     }
 
     return count;
 }
+
