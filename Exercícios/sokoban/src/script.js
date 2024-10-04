@@ -1,6 +1,5 @@
 import { buildGameBoard } from "./board.js";
-import Piece from "./piece.js";
-import { boardMap } from "./board.js";
+import { mapa1, mapa2 } from "./map.js";
 
 const { pieces, numberOfGoals } = buildGameBoard();
 const board = document.querySelector('.board');

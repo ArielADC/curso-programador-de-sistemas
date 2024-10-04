@@ -1,17 +1,17 @@
-export const lvl0 = `
+export const mapa1 = `
 ___####
 ##....###
 ##.PB.##
 __####
 `
-export const lvl1 = `
+export const mapa2 = `
 ___####
 ##..P..###
 ##.PB.##
 __####
 _##..B.B
 `
-export const lvl2 = `
+export const mapa3 = `
 ___####
 ##....###
 ##.PB.##

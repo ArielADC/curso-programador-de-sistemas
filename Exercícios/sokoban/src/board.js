@@ -1,5 +1,5 @@
 import Piece from "./piece.js";
-import { lvl0, lvl1} from "./level.js";
+import { lvl0, lvl1} from "./mapas.js";
 
 function strig2BoadMap(level){
   const lines = level.trim().esplit('\n');
