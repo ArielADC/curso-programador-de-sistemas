@@ -1,5 +1,5 @@
 import { buildGameBoard } from "./board.js";
-import { mapa1, mapa2 } from "./mapas.js";
+import { mapa1} from "./mapas.js";
 
 const { boardMap, pieces: { boxes, player }, numberOfGoals } = buildGameBoard(mapa1);
 
@@ -19,7 +19,7 @@ function handlePieceMovement(keycode){
         const nextCaixaPosition = caixa.nextPosition(keycode);
         const outraCaixa = findBoxAtPosition(nextCaixaPosition);
         const caixaCanMove = verifyPosition(nextCaixaPosition);
-       
+
         if(caixaCanMove && !outraCaixa) {
             caixa.moveTo(nextCaixaPosition);
             player.moveTo(nextPlayerPosition);
@@ -28,7 +28,7 @@ function handlePieceMovement(keycode){
         }
     } else {
         const playerCanMove = verifyPosition(nextPlayerPosition);
-       
+
         if (playerCanMove) player.moveTo(nextPlayerPosition);
     }
 }
@@ -44,7 +44,7 @@ function levelCompleted(){
 
     for(const position of boxes) {
         let { x: j, y: i } = position;
-       
+
         if(boardMap[i][j] === 'G') count++;
     }
 
