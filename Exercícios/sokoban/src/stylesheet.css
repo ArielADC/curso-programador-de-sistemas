@@ -76,9 +76,6 @@ height: inherit;
     
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#76030F", endColorstr="#121B67", GradientType=1 );
 }
-.box { background-color: chocolate; }
-.goal { background-color: burlywood; }
-.wall { background-color: darkgray; }
 .jogador{
     position: absolute;
     width: 64px;
@@ -101,3 +98,6 @@ height: inherit;
     background-color: rgb(229, 159, 9) ;
     box-sizing: border-box;
 }
+.box { background-color: chocolate; }
+.goal { background-color: burlywood; }
+.wall { background-color: darkgray; }

@@ -1,64 +1,50 @@
 import Piece from "./piece.js";
-import { lvl0, lvl1} from "./level.js";
 
-function strig2BoadMap(level){
-  const lines = level.trim().esplit('\n');
-  console.log(lines);
+export function buildGameBoard(level) {
+    const boardMap = level.trim().split('\n');
 
-}
-strig2BoadMap
+    const game = document.getElementById("game");
+    const board = createGameElement('div', 'board', game);
 
-export const boardMap = [
-  ["", "", "#", "#", "#", "#", "#", ],
-  ["#", "#", ".", ".", ".", ".", "#", ],
-  ["#", ".", ".", ".", "#", ".", ".", "#"],
-  ["#", ".", "#", "G", ".", ".", ".", "#"],
-  ["#", ".", ".", "G", "B", "#", ".", "#"],
-  ["#", ".", ".", "#", ".", "B", ".", "#"],
-  ["", "#", ".", "P", ".", ".", "#", "#"],
-  ["", "#", "#", "#", "#", "#", "", ]
-];
-
-const NUM_ROWS = boardMap.length;
-
-export function buildGameBoard() {
-  const game = document.getElementById("game");
-  const board = createGameElement('div', 'board', game);
-  const pieces = {
-    block: []
-  };
-  
-  let numberOfGoals = 0;
-  
-  for (let x = 0; x < NUM_ROWS; x++) {
-    const row = createGameElement('div', 'row', board);
-    const NUM_COLS = boardMap[x].length;
+    let numberOfGoals = 0, boxes = [], player = null;
     
-    
-    for (let y = 0; y < NUM_COLS; y++) {
-      const cell = createGameElement('div', 'cell', row);
-      const char = boardMap[x][y];
-      const position = { x: x, y: y }
+    for (let i = 0; i < boardMap.length; i++) {
+      const row = createGameElement('div', 'row', board);
 
+        for (let j = 0; j < boardMap[i].length; j++) {
+        const cell = createGameElement('div', 'cell', row);
 
-      if (char === '#') cell.classList.add('wall');
-      if (char === 'P') pieces.player = position;
-      if (char === 'B') pieces.block.push(position);
-      if (char === 'G') {
-        cell.classList.add('goal')
-        numberOfGoals++;
-      };
-      if (char === '') cell.classList.add('empty');
+            const char = boardMap[i][j];
+            const position = { x: j, y: i }
+
+            if (char === '#') cell.classList.add('wall');
+            if (char === '_') cell.classList.add('empty');
+            if (char === ' ') cell.classList.add('empty');
+            if (char === 'P') player = createBoardPiece(position, 'jogador');
+            if (char === 'B') boxes.push(createBoardPiece(position, 'Block'));
+            if (char === 'G') {
+                cell.classList.add('goal');
+                numberOfGoals++;
+            }
+        }
     }
-  }
-  return {boardMap, pieces, numberOfGoals };
-}
 
+    return { boardMap, pieces: { boxes, player }, numberOfGoals };
+}
 
 export function createGameElement(elementName, className, parentNode) {
-  const element = document.createElement(elementName);
-  element.classList.add(className);
-  parentNode.append(element);
+    const element = document.createElement(elementName);
+    element.classList.add(className);
+    parentNode.append(element);
 
-  return element;
+    return element;
+}
+
+function createBoardPiece(piecePosition, className) {
+    const board = document.querySelector('.board');
+    const piece = new Piece(piecePosition.x, piecePosition.y);
+    
+    piece.insertElementInto(className, board);
+
+    return piece;
 }
