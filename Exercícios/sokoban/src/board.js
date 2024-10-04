@@ -9,10 +9,10 @@ export function buildGameBoard(level) {
     let numberOfGoals = 0, boxes = [], player = null;
     
     for (let i = 0; i < boardMap.length; i++) {
-        const row = createGameElement('div', 'row', board);
+      const row = createGameElement('div', 'row', board);
 
         for (let j = 0; j < boardMap[i].length; j++) {
-            const cell = createGameElement('div', 'cell', row);
+        const cell = createGameElement('div', 'cell', row);
 
             const char = boardMap[i][j];
             const position = { x: j, y: i }
@@ -21,7 +21,7 @@ export function buildGameBoard(level) {
             if (char === '_') cell.classList.add('empty');
             if (char === ' ') cell.classList.add('empty');
             if (char === 'P') player = createBoardPiece(position, 'jogador');
-            if (char === 'B') boxes.push(createBoardPiece(position, 'box'));
+            if (char === 'B') boxes.push(createBoardPiece(position, 'Block'));
             if (char === 'G') {
                 cell.classList.add('goal');
                 numberOfGoals++;
