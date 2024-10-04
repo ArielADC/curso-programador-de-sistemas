@@ -39,63 +39,14 @@ function verifyPosition(position) {
     return boardMap[i][j] !== '#';
 }
 
+function levelCompleted(){
+    let count = 0;
 
-// function levantaAPlaquinha() {
-//     alert("você Venceu!");
-// }
+    for(const position of boxes) {
+        let { x: j, y: i } = position;
+       
+        if(boardMap[i][j] === 'G') count++;
+    }
 
-// function handlePieceMovement(keycode) {
-//     const nextPlayerposition = player.nextPosition(keycode);
-
-//     const foundPiece = findBoxAtPosition(nextPlayerposition);
-
-//     if (foundPiece) {
-
-//         const boxNextPosition = foundPiece.nextPosition(keycode);
-
-//         if (verifyPosition(boxNextPosition) && !findBoxAtPosition(boxNextPosition)) {
-
-//             foundPiece.moveTo(boxNextPosition);
-//             player.moveTo(nextPlayerposition);
-
-//             const qtdCaixasCertas = contagemDeCaixaCorretas();
-
-//             if (qtdCaixasCertas == numberOfGoals) {
-//                 setTimeout(levantaAPlaquinha, 350);
-
-//             }
-
-//         }
-//     }
-//     else {
-//         if (verifyPosition(nextPlayerposition)) {
-//             player.moveTo(nextPlayerposition);
-//         }
-//     }
-// }
-
-// function verifyPosition(position) {
-//     let { x, y } = position;
-
-
-//     if (x < 0 || x >= boardMap.length || y < 0 || y >= boardMap[0].length) {
-//         return false;
-//     }
-
-//     return boardMap[x][y] !== '#';
-// }
-
-// function contagemDeCaixaCorretas() {
-//     let count = 0;
-
-//    for (let i = 0; i < boxes.length; i++) {
-//     let { x, y } = boxes[i];
-    
-//     if (boardMap[y][x] === 'G') count++; 
-
-
-//     console.log(count);
-//    }
-
-//     return count;
-// }
+    return count == numberOfGoals;
+}
